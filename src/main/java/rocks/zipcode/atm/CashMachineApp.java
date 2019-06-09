@@ -1,33 +1,17 @@
 package rocks.zipcode.atm;
 
-import rocks.zipcode.atm.bank.Bank;
+
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.scene.layout.FlowPane;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
 
+import rocks.zipcode.atm.bank.Bank;
 /**
  * @author ZipCodeWilmington
  */
@@ -37,14 +21,12 @@ public class CashMachineApp extends Application {
     private CashMachine cashMachine = new CashMachine(new Bank());
 
     private Parent createContent() {
-        VBox vbox = new VBox(10); //Vertical box
-        vbox.setStyle("-fx-background-color: #8BF4FF");
+        VBox vbox = new VBox(10);
         vbox.setPrefSize(600, 600);
 
         TextArea areaInfo = new TextArea();
 
         Button btnSubmit = new Button("Set Account ID");
-        //btnSubmit.setStyle("-fx-background-color: #8BF4FF"); //To change button background color
         btnSubmit.setOnAction(e -> {
             int id = Integer.parseInt(field.getText());
             cashMachine.login(id);
@@ -75,10 +57,7 @@ public class CashMachineApp extends Application {
             areaInfo.setText(cashMachine.toString());
         });
 
-
         FlowPane flowpane = new FlowPane();
-
-        flowpane.setStyle("-fx-background-color:#8BF4FF");
 
         flowpane.getChildren().add(btnSubmit);
         flowpane.getChildren().add(btnDeposit);
@@ -90,7 +69,6 @@ public class CashMachineApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
         stage.setScene(new Scene(createContent()));
         stage.show();
     }
