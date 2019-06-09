@@ -22,8 +22,15 @@ public class CashMachine {
         accountData = data;
     };
 
-    public void userLogin(String username, Integer pin){
-        bank.setUserToBank(username, pin);
+    public Boolean userLogin(String username, Integer pin){
+
+        Boolean loggedIn = bank.setUserToBank(username, pin);
+        if (loggedIn) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public void login(int id) {
