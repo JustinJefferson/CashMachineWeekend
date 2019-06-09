@@ -31,7 +31,7 @@ public class LoginPage {
 
   //  public  void start (Stage primaryStage) {
 
-    public static void login () {
+    public static Parent createContent() {
       // primaryStage.setTitle("Bank of Whatever");
 
         // positioning of box
@@ -74,6 +74,8 @@ public class LoginPage {
        // primaryStage.setScene(scene);
 
         // primaryStage.show();
+
+        return grid;
 
 
     }

@@ -22,6 +22,10 @@ public class CashMachine {
         accountData = data;
     };
 
+    public void userLogin(String username, Integer pin){
+        bank.setUserToBank(username, pin);
+    }
+
     public void login(int id) {
         tryCall(
                 () -> bank.getAccountById(id),

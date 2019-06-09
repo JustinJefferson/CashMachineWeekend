@@ -11,8 +11,12 @@ import java.util.Map;
 public class Bank {
 
     private Map<Integer, Account> accounts = new HashMap<>();
+    private Map<String, User> users = new HashMap<>();
 
     public Bank() {
+        users.put("BobIsGreat03", new User("Bob", "bobloblaw034@gmail.com", "BobIsGreat03", 7027));
+        users.put("alicemayer55", new User("Alice", "alicegracemayer@yahoo.com", "alicemayer55",4576));
+
         accounts.put(1000, new BasicAccount(new AccountData(
                 1000, "Example 1", "example1@gmail.com", 500
         )));
@@ -28,6 +32,19 @@ public class Bank {
         accounts.put(4000, new BasicAccount(new AccountData(
                 4000, "Alice", "aliceisdead@podcast.listen", 800
         )));
+    }
+
+    public Boolean setUserToBank(String username, Integer pin) {
+
+        User user = users.get(username);
+
+        if (user != null) {
+            if(user.getPin().equals(pin)) {
+                accounts = user.getAccounts();
+                return true;
+            }
+        }
+        return false;
     }
 
     public ActionResult<AccountData> getAccountById(int id) {
