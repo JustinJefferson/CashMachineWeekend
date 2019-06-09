@@ -1,16 +1,17 @@
 package rocks.zipcode.atm;
 
-import rocks.zipcode.atm.bank.Bank;
+
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.layout.FlowPane;
 
+import rocks.zipcode.atm.bank.Bank;
 /**
  * @author ZipCodeWilmington
  */
