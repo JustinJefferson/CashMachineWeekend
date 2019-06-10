@@ -22,3 +22,8 @@ public class VisualEffects {
     }
 
 }
+
+
+//field.setStyle("-fx-background-color:#8BF4FF"); //Input text box color blue
+//flowpane.setStyle("-fx-background-color:#8BF4FF"); //Where buttons are color blue
+//vbox.setStyle("-fx-background-color:#8BF4FF"); //Background color blue

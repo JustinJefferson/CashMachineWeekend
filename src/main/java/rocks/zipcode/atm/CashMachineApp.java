@@ -5,12 +5,22 @@ import javafx.application.Application;
 import javafx.scene.Parent;
         import javafx.scene.Scene;
         import javafx.scene.control.Button;
+        import javafx.scene.media.AudioClip;
         import javafx.scene.control.TextArea;
         import javafx.scene.control.TextField;
         import javafx.scene.layout.VBox;
         import javafx.stage.Stage;
         import javafx.scene.layout.FlowPane;
+
 import javafx.scene.paint.Color;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * @author ZipCodeWilmington
@@ -23,9 +33,16 @@ public class CashMachineApp extends Application {
     private static final Color lightBlue = Color.web("#8BF4FF"); //for blue text
     private static final Color black = Color.web("#000000"); //for black text
 
+ /*  //Easter Egg
+    File BrokeClip = new File ("src/Resources/BrokeClip.wav");
+    AudioClip easterEgg1 = new AudioClip(BrokeClip.toURI().toString());
+*/
+
+
+
     private Parent createContent() {
         VBox vbox = new VBox(10);
-
+        vbox.setStyle("-fx-background-color:#8BF4FF"); //Background color blue
         vbox.setPrefSize(600, 600);
 
         TextArea areaInfo = new TextArea();
@@ -36,21 +53,22 @@ public class CashMachineApp extends Application {
         Button btnDeposit = new Button("Deposit");
         Button btnExit = new Button("Exit");
 
-        //Declare background
-        FlowPane flowpane = new FlowPane();
+        //Declare flowPane
+        FlowPane flowpane = new FlowPane(); //Where the buttons are
 
 
         //Submit
         btnSubmit.setOnAction(e -> {
             int id = Integer.parseInt(field.getText());
             cashMachine.login(id);
-
             areaInfo.setText(cashMachine.toString());
         });
 
         //Deposit
         btnDeposit.setOnAction(e -> {
+
             int amount = Integer.parseInt(field.getText());
+
             cashMachine.deposit(amount);
 
             areaInfo.setText(cashMachine.toString());
@@ -59,7 +77,9 @@ public class CashMachineApp extends Application {
         //Withdraw
         btnWithdraw.setOnAction(e -> {
             int amount = Integer.parseInt(field.getText());
+     //       easterEgg1.play();
             cashMachine.withdraw(amount);
+
 
             areaInfo.setText(cashMachine.toString());
         });
@@ -73,7 +93,7 @@ public class CashMachineApp extends Application {
 
 
 
-        flowpane.setStyle("-fx-background-color:#8BF4FF"); //Background color blue
+        flowpane.setStyle("-fx-background-color:#8BF4FF"); //color blue
         flowpane.getChildren().add(btnSubmit);
         flowpane.getChildren().add(btnDeposit);
         flowpane.getChildren().add(btnWithdraw);
