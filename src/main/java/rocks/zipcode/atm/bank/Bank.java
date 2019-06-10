@@ -16,6 +16,10 @@ public class Bank {
     public Bank() {
         users.put("AdamIsGreat03", new User("Adam", "Adamloblaw034@gmail.com", "AdamIsGreat03", 7027));
         users.put("alicemayer55", new User("Alice", "alicegracemayer@yahoo.com", "alicemayer55",4576));
+        users.put("easyaccount", new User("John Doe", "johndoe@zipcode.io", "easyaccount", 1111,
+                123, 456, 789));
+        users.put("exampleAccount", new User("Jane Doe", "janedoe@zipcode.io", "exampleAccount", 0000,
+                700, 800, 2000));
 
         accounts.put(1000, new BasicAccount(new AccountData(
                 1000, "Example 1", "example1@gmail.com", 500
