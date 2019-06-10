@@ -34,7 +34,7 @@ public class CashMachineApp extends Application {
     private static final Color black = Color.web("#000000"); //for black text
 
  /*  //Easter Egg
-    File BrokeClip = new File ("src/Resources/BrokeClip.wav");
+    File BrokeClip = new File ("src/Resources/BrokeClip.mp3");
     AudioClip easterEgg1 = new AudioClip(BrokeClip.toURI().toString());
 */
 
