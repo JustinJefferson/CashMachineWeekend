@@ -40,4 +40,8 @@ public abstract class Account {
         accountData = new AccountData(accountData.getId(), accountData.getName(), accountData.getEmail(),
                 newBalance);
     }
+
+    public String getName() { return accountData.getName(); }
+
+    public String getEmail() { return accountData.getEmail(); }
 }
