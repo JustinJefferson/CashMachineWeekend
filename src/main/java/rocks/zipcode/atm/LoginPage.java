@@ -150,7 +150,7 @@ public class LoginPage {
         basicBtn.setOnAction(e -> {
             accountNum = 1000;
             if(login) {
-                balanceInfo.setText(String.format("%.2f", cashMachine.getBalance(accountNum)));
+                balanceInfo.setText(String.format("$%.2f", cashMachine.getBalance(accountNum)));
                 cashMachine.login(accountNum);
             }
         });
@@ -158,7 +158,7 @@ public class LoginPage {
         premiumBtn.setOnAction(e -> {
             accountNum = 1001;
             if(login){
-                balanceInfo.setText(String.format("%.2f", cashMachine.getBalance(accountNum)));
+                balanceInfo.setText(String.format("$%.2f", cashMachine.getBalance(accountNum)));
                 cashMachine.login(accountNum);
             }
         });
@@ -166,7 +166,7 @@ public class LoginPage {
         savingsBtn.setOnAction(e -> {
             accountNum = 1002;
             if(login) {
-                balanceInfo.setText(String.format("%.2f", cashMachine.getBalance(accountNum)));
+                balanceInfo.setText(String.format("$%.2f", cashMachine.getBalance(accountNum)));
                 cashMachine.login(accountNum);
             }
         });
@@ -185,7 +185,7 @@ public class LoginPage {
                 float amount = Float.parseFloat(amountInput.getText());
                 cashMachine.withdraw(amount);
 
-                balanceInfo.setText(String.format("%.2f", cashMachine.getBalance(accountNum)));
+                balanceInfo.setText(String.format("$%.2f", cashMachine.getBalance(accountNum)));
                 amountInput.setText("");
             }
         });
@@ -195,7 +195,7 @@ public class LoginPage {
                 float amount = Float.parseFloat(amountInput.getText());
                 cashMachine.deposit(amount);
 
-                balanceInfo.setText(String.format("%.2f", cashMachine.getBalance(accountNum)));
+                balanceInfo.setText(String.format("$%.2f", cashMachine.getBalance(accountNum)));
                 amountInput.setText("");
             }
         });
