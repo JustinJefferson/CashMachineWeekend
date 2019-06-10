@@ -64,13 +64,13 @@ public class LoginPage {
         heading.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(heading, 0, 0, 2, 1);
 
-        Label userID = new Label("Enter User ID:");
+        Label userID = new Label("User ID:");
         grid.add(userID, 0, 1);
 
         TextField userTextField = new TextField();
         grid.add(userTextField, 1, 1);
 
-        Label pin = new Label("Pin:");
+        Label pin = new Label("PIN:");
         grid.add(pin, 0, 2);
 
         PasswordField pwBox = new PasswordField();
@@ -143,7 +143,7 @@ public class LoginPage {
         basicBtn.setOnAction(e -> {
             accountNum = 1000;
             if(login) {
-                balanceInfo.setText(Integer.toString(cashMachine.getBalance(1000)));
+                balanceInfo.setText(String.format("%.2f", cashMachine.getBalance(accountNum)));
                 cashMachine.login(accountNum);
             }
         });
@@ -151,7 +151,7 @@ public class LoginPage {
         premiumBtn.setOnAction(e -> {
             accountNum = 1001;
             if(login){
-                balanceInfo.setText(Integer.toString(cashMachine.getBalance(1001)));
+                balanceInfo.setText(String.format("%.2f", cashMachine.getBalance(accountNum)));
                 cashMachine.login(accountNum);
             }
         });
@@ -159,7 +159,7 @@ public class LoginPage {
         savingsBtn.setOnAction(e -> {
             accountNum = 1002;
             if(login) {
-                balanceInfo.setText(Integer.toString(cashMachine.getBalance(1002)));
+                balanceInfo.setText(String.format("%.2f", cashMachine.getBalance(accountNum)));
                 cashMachine.login(accountNum);
             }
         });
@@ -174,20 +174,20 @@ public class LoginPage {
         Button withdrawBtn = new Button("Withdraw");
         withdrawBtn.setOnAction(e -> {
             if(login) {
-                int amount = Integer.parseInt(amountInput.getText());
+                float amount = Float.parseFloat(amountInput.getText());
                 cashMachine.withdraw(amount);
 
-                balanceInfo.setText(Integer.toString(cashMachine.getBalance(accountNum)));
+                balanceInfo.setText(String.format("%.2f", cashMachine.getBalance(accountNum)));
                 amountInput.setText("");
             }
         });
         Button depositBtn = new Button("Deposit");
         depositBtn.setOnAction(e -> {
             if(login) {
-                int amount = Integer.parseInt(amountInput.getText());
+                float amount = Float.parseFloat(amountInput.getText());
                 cashMachine.deposit(amount);
 
-                balanceInfo.setText(Integer.toString(cashMachine.getBalance(accountNum)));
+                balanceInfo.setText(String.format("%.2f", cashMachine.getBalance(accountNum)));
                 amountInput.setText("");
             }
         });

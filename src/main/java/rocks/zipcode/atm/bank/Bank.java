@@ -47,7 +47,7 @@ public class Bank {
         return false;
     }
 
-    public int getBalanceOfAccount(int id) {
+    public float getBalanceOfAccount(int id) {
         Account account = accounts.get(id);
         return account.getBalance();
     }
@@ -72,14 +72,14 @@ public class Bank {
         }
     }
 
-    public ActionResult<AccountData> deposit(AccountData accountData, int amount) {
+    public ActionResult<AccountData> deposit(AccountData accountData, float amount) {
         Account account = accounts.get(accountData.getId());
         account.deposit(amount);
 
         return ActionResult.success(account.getAccountData());
     }
 
-    public ActionResult<AccountData> withdraw(AccountData accountData, int amount) {
+    public ActionResult<AccountData> withdraw(AccountData accountData, float amount) {
         Account account = accounts.get(accountData.getId());
         boolean ok = account.withdraw(amount);
 
