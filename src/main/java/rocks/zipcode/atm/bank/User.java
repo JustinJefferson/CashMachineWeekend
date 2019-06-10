@@ -34,6 +34,15 @@ public class User {
                 1002, name, email, 1000)));
 
     }
+    public User (String name, String email, String username, Integer pin, int balance, int balance2, int balance3){
+        this.name=name;
+        this.email=email;
+        this.username=username;
+        this.pin=pin;
+        accounts.put(1000, new BasicAccount(new AccountData(1000,name,email,balance)));
+        accounts.put(1001,new PremiumAccount(new AccountData(1001,name,email,balance2)));
+        accounts.put(1002,new SavingsAccount(new AccountData(1002,name,email,balance3)));
+    }
 
     public String getName() {
         return name;
