@@ -33,6 +33,18 @@ public class CashMachine {
         }
     }
 
+    public Integer getBalance(int id) {
+        return bank.getBalanceOfAccount(id);
+    }
+
+    public String getName(int id) {
+        return bank.getNameOnAccount(id);
+    }
+
+    public String getEmail(int id) {
+        return bank.getEmailOnAccount(id);
+    }
+
     public void login(int id) {
         tryCall(
                 () -> bank.getAccountById(id),

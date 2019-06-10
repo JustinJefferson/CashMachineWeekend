@@ -30,6 +30,7 @@ public class LoginPage {
     private String error = "";
     private CashMachine cashMachine;
     private Boolean login = false;
+    private Integer accountNum = 1000;
 
     public LoginPage(CashMachine cashMachine){
         this.cashMachine = cashMachine;
@@ -82,7 +83,6 @@ public class LoginPage {
         grid.add(nameLabel, 0, 5);
 
         TextField nameInfo = new TextField();
-        nameInfo.setText("Duh");
         grid.add(nameInfo, 0, 6);
 
         Label emailLabel = new Label("EMAIL:");
@@ -112,21 +112,57 @@ public class LoginPage {
         hbBtn.getChildren().add(btn);
         grid.add(hbBtn, 1, 4);
         btn.setOnAction(e -> {
-            Boolean isLoggedIn = cashMachine.userLogin(userTextField.getText(), Integer.parseInt(pwBox.getText()));
-            System.out.println("Print this");
-            if(!isLoggedIn) {
-                errorMsg.setText("Incorrect User ID or PIN.");
+            if(!login) {
+                Boolean isLoggedIn = cashMachine.userLogin(userTextField.getText(), Integer.parseInt(pwBox.getText()));
+                System.out.println("Print this");
+                if (!isLoggedIn) {
+                    errorMsg.setText("Incorrect User ID or PIN.");
+                } else {
+                    btn.setText("Logout");
+                    login = true;
+                    nameInfo.setText(cashMachine.getName(accountNum));
+                    emailInfo.setText(cashMachine.getEmail(accountNum));
+                    cashMachine.login(accountNum);
+                    userTextField.setText("");
+                    pwBox.setText("");
+                }
             }
             else {
-                btn.setText("Logout");
+                btn.setText("Login");
+                login = false;
+                nameInfo.setText("");
+                emailInfo.setText("");
+                amountInput.setText("");
+                balanceInfo.setText("");
             }
-                });
+        });
 
 
 
         Button basicBtn = new Button("Basic");
+        basicBtn.setOnAction(e -> {
+            accountNum = 1000;
+            if(login) {
+                balanceInfo.setText(Integer.toString(cashMachine.getBalance(1000)));
+                cashMachine.login(accountNum);
+            }
+        });
         Button premiumBtn = new Button("Premium");
+        premiumBtn.setOnAction(e -> {
+            accountNum = 1001;
+            if(login){
+                balanceInfo.setText(Integer.toString(cashMachine.getBalance(1001)));
+                cashMachine.login(accountNum);
+            }
+        });
         Button savingsBtn = new Button("Savings");
+        savingsBtn.setOnAction(e -> {
+            accountNum = 1002;
+            if(login) {
+                balanceInfo.setText(Integer.toString(cashMachine.getBalance(1002)));
+                cashMachine.login(accountNum);
+            }
+        });
 
         HBox accountBtnBox = new HBox( 30);
         accountBtnBox.setAlignment(Pos.CENTER);
@@ -136,7 +172,25 @@ public class LoginPage {
         grid.add(accountBtnBox, 0, 8, 2, 1);
 
         Button withdrawBtn = new Button("Withdraw");
+        withdrawBtn.setOnAction(e -> {
+            if(login) {
+                int amount = Integer.parseInt(amountInput.getText());
+                cashMachine.withdraw(amount);
+
+                balanceInfo.setText(Integer.toString(cashMachine.getBalance(accountNum)));
+                amountInput.setText("");
+            }
+        });
         Button depositBtn = new Button("Deposit");
+        depositBtn.setOnAction(e -> {
+            if(login) {
+                int amount = Integer.parseInt(amountInput.getText());
+                cashMachine.deposit(amount);
+
+                balanceInfo.setText(Integer.toString(cashMachine.getBalance(accountNum)));
+                amountInput.setText("");
+            }
+        });
 
         HBox withDepoBox = new HBox( 10);
         withDepoBox.setAlignment(Pos.BOTTOM_RIGHT);

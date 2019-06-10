@@ -31,7 +31,7 @@ public class User {
         accounts.put(1001, new PremiumAccount(new AccountData(
                 1001, name, email, 0)));
         accounts.put(1002, new SavingsAccount(new AccountData(
-                1003, name, email, 1000)));
+                1002, name, email, 1000)));
 
     }
 

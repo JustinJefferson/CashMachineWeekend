@@ -14,7 +14,7 @@ public class Bank {
     private Map<String, User> users = new HashMap<>();
 
     public Bank() {
-        users.put("BobIsGreat03", new User("Bob", "bobloblaw034@gmail.com", "BobIsGreat03", 7027));
+        users.put("AdamIsGreat03", new User("Adam", "Adamloblaw034@gmail.com", "AdamIsGreat03", 7027));
         users.put("alicemayer55", new User("Alice", "alicegracemayer@yahoo.com", "alicemayer55",4576));
 
         accounts.put(1000, new BasicAccount(new AccountData(
@@ -45,6 +45,21 @@ public class Bank {
             }
         }
         return false;
+    }
+
+    public int getBalanceOfAccount(int id) {
+        Account account = accounts.get(id);
+        return account.getBalance();
+    }
+
+    public String getNameOnAccount(int id) {
+        Account account = accounts.get(id);
+        return account.getName();
+    }
+
+    public String getEmailOnAccount(int id){
+        Account account = accounts.get(id);
+        return account.getEmail();
     }
 
     public ActionResult<AccountData> getAccountById(int id) {
