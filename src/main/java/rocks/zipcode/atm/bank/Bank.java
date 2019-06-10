@@ -14,7 +14,7 @@ public class Bank {
     private Map<String, User> users = new HashMap<>();
 
     public Bank() {
-        users.put("AdamIsGreat03", new User("Adam", "Adamloblaw034@gmail.com", "AdamIsGreat03", 7027));
+        users.put("Adam", new User("Adam", "Adamloblaw034@gmail.com", "AdamIsGreat03", 1234)); //Changed usernme to Adam from AdamIsGreat03 and pin to 1234 from 7027
         users.put("alicemayer55", new User("Alice", "alicegracemayer@yahoo.com", "alicemayer55",4576));
         users.put("easyaccount", new User("John Doe", "johndoe@zipcode.io", "easyaccount", 1111,
                 123, 456, 789));

@@ -24,6 +24,7 @@ import javafx.util.Pair;
 import rocks.zipcode.atm.bank.Bank;
 import rocks.zipcode.atm.bank.AccountData;
 import rocks.zipcode.atm.bank.Account;
+import javafx.scene.paint.Color;
 
 public class LoginPage {
 
@@ -31,6 +32,9 @@ public class LoginPage {
     private CashMachine cashMachine;
     private Boolean login = false;
     private Integer accountNum = 1000;
+
+    private static final Color lightBlue = Color.web("#8BF4FF"); //for blue text
+    private static final Color black = Color.web("#000000"); //for black text
 
     public LoginPage(CashMachine cashMachine){
         this.cashMachine = cashMachine;
@@ -43,6 +47,7 @@ public class LoginPage {
     public Parent createContent() {
       // primaryStage.setTitle("Bank of Whatever");
         GridPane othergrid = new GridPane();
+        othergrid.setStyle("-fx-background-color:#8BF4FF");
         othergrid.setAlignment(Pos.CENTER);
         othergrid.setHgap(10);
         othergrid.setVgap(10);
@@ -54,6 +59,7 @@ public class LoginPage {
 
         // positioning of box
         GridPane grid = new GridPane();
+        grid.setStyle("-fx-background-color:#8BF4FF"); //Background color blue ******
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
         grid.setVgap(10);
@@ -120,6 +126,7 @@ public class LoginPage {
                 } else {
                     btn.setText("Logout");
                     login = true;
+                    //
                     nameInfo.setText(cashMachine.getName(accountNum));
                     emailInfo.setText(cashMachine.getEmail(accountNum));
                     cashMachine.login(accountNum);
@@ -165,6 +172,7 @@ public class LoginPage {
         });
 
         HBox accountBtnBox = new HBox( 30);
+        accountBtnBox.setStyle("-fx-background-color:#8BF4FF"); //Background color blue *******
         accountBtnBox.setAlignment(Pos.CENTER);
         accountBtnBox.getChildren().add(basicBtn);
         accountBtnBox.getChildren().add(premiumBtn);
@@ -193,6 +201,7 @@ public class LoginPage {
         });
 
         HBox withDepoBox = new HBox( 10);
+        withDepoBox.setStyle("-fx-background-color:#8BF4FF"); //Background color blue ******
         withDepoBox.setAlignment(Pos.BOTTOM_RIGHT);
         withDepoBox.getChildren().add(withdrawBtn);
         withDepoBox.getChildren().add(depositBtn);
