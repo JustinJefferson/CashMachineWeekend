@@ -78,6 +78,33 @@ public class LoginPage {
         Label errorMsg = new Label(error);
         grid.add(errorMsg, 0, 3, 2, 1);
 
+        Label nameLabel = new Label("NAME:");
+        grid.add(nameLabel, 0, 5);
+
+        TextField nameInfo = new TextField();
+        nameInfo.setText("Duh");
+        grid.add(nameInfo, 0, 6);
+
+        Label emailLabel = new Label("EMAIL:");
+        grid.add(emailLabel, 1, 5);
+
+        TextField emailInfo = new TextField();
+        grid.add(emailInfo, 1,6);
+
+        Label balanceLabel = new Label("ACCOUNT BALANCE:");
+        grid.add(balanceLabel, 0, 7);
+
+        TextField balanceInfo = new TextField();
+        grid.add(balanceInfo, 1, 7);
+
+        Label amountLabel = new Label("AMOUNT:");
+        grid.add(amountLabel, 0, 9);
+
+        TextField amountInput = new TextField();
+        grid.add(amountInput, 1, 9);
+
+
+
         //buttons
         Button btn = new Button("Login");
         HBox hbBtn = new HBox(10);
@@ -87,8 +114,37 @@ public class LoginPage {
         btn.setOnAction(e -> {
             Boolean isLoggedIn = cashMachine.userLogin(userTextField.getText(), Integer.parseInt(pwBox.getText()));
             System.out.println("Print this");
-            if(!isLoggedIn) errorMsg.setText("Incorrect User ID or PIN.");
+            if(!isLoggedIn) {
+                errorMsg.setText("Incorrect User ID or PIN.");
+            }
+            else {
+                btn.setText("Logout");
+            }
                 });
+
+
+
+        Button basicBtn = new Button("Basic");
+        Button premiumBtn = new Button("Premium");
+        Button savingsBtn = new Button("Savings");
+
+        HBox accountBtnBox = new HBox( 30);
+        accountBtnBox.setAlignment(Pos.CENTER);
+        accountBtnBox.getChildren().add(basicBtn);
+        accountBtnBox.getChildren().add(premiumBtn);
+        accountBtnBox.getChildren().add(savingsBtn);
+        grid.add(accountBtnBox, 0, 8, 2, 1);
+
+        Button withdrawBtn = new Button("Withdraw");
+        Button depositBtn = new Button("Deposit");
+
+        HBox withDepoBox = new HBox( 10);
+        withDepoBox.setAlignment(Pos.BOTTOM_RIGHT);
+        withDepoBox.getChildren().add(withdrawBtn);
+        withDepoBox.getChildren().add(depositBtn);
+        grid.add(withDepoBox, 1, 10);
+
+
 
 
         //Scene scene = new Scene(grid, 300, 275);
